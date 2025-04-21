@@ -216,6 +216,10 @@ img {
   .card--first {
     /* Positioning */
     grid-area: first;
+
+    background-image: url(../images/bg-pattern-quotation.svg);
+    background-repeat: no-repeat;
+    background-position: top right 15%;
   }
 
   .card--second {

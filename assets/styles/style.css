@@ -1,0 +1,240 @@
+/* ==================== */
+/* # General Settings # */
+/* ==================== */
+
+:root {
+  --black: hsl(0, 0%, 7%);
+
+  --dark-blue: hsl(219, 29%, 14%);
+
+  --grey-100: hsl(214, 17%, 92%);
+  --grey-200: hsl(0, 0%, 81%);
+  --grey-400: hsl(224, 10%, 45%);
+  --grey-500: hsl(217, 19%, 35%);
+
+  --purple-50: hsl(260, 100%, 95%);
+  --purple-300: hsl(264, 82%, 80%);
+  --purple-500: hsl(263, 55%, 52%);
+
+  --white: hsl(0, 0%, 100%);
+}
+
+body {
+  /* Box model */
+  padding: 2em;
+
+  /* Typography */
+  font-family: "Barlow Semi Condensed", sans-serif;
+
+  /* Visual */
+  background-color: var(--grey-100);
+}
+
+h2 {
+  /* Typography */
+  font-size: clamp(1.25rem, 0.376vw + 1.162rem, 1.5rem);
+  line-height: 1.2;
+}
+
+p {
+  /* Typography */
+  font-size: clamp(0.8125rem, 0.282vw + 0.746rem, 1rem);
+  line-height: 1.5;
+}
+
+.cards {
+  /* Box model */
+  display: grid;
+  gap: 2em;
+  margin-block: 3em;
+}
+
+/* ================ */
+/* # Simple Reset # */
+/* ================ */
+
+* {
+  /* Box model */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  /* Box model */
+  display: block;
+  max-width: 100%;
+}
+
+/* ================== */
+/* # Card Component # */
+/* ================== */
+
+.card {
+  /* Box model */
+  padding: 2em;
+
+  /* Visual */
+  background-color: var(--bg-color-card);
+  border-radius: 0.625em;
+  box-shadow: 3.125em 3.125em 1.25em var(--grey-200);
+}
+
+.card > *:not(:last-child) {
+  /* Box model */
+  margin-block-end: 1em;
+}
+
+.card__title {
+  /* Visual */
+  color: var(--title-color);
+}
+
+.card__text {
+  /* Visual */
+  color: var(--text-color);
+}
+
+/* ============== */
+/* # User Block # */
+/* ============== */
+
+.card__user {
+  /* Box model */
+  align-items: center;
+  display: flex;
+  gap: 1em;
+}
+
+.card__user-image {
+  /* Box model */
+  width: 2em;
+
+  /* Visual */
+  border: 0.125em solid var(--border-color-image, transparent);
+  border-radius: 50%;
+}
+
+.card__user-info {
+  /* Box model */
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.card__user-info-name {
+  /* Typography */
+  font-size: clamp(0.825rem, 0.263vw + 0.763rem, 1rem);
+
+  /* Visual */
+  color: var(--user-name-color);
+}
+
+.card__user-info-status {
+  /* Typography */
+  font-size: clamp(0.7rem, 0.15vw + 0.665rem, 0.8rem);
+
+  /* Visual */
+  color: var(--user-status-color);
+}
+
+/* ================== */
+/* # Card Modifiers # */
+/* ================== */
+
+.card--first {
+  --bg-color-card: var(--purple-500);
+  --border-color-image: var(--purple-300);
+  --text-color: var(--grey-200);
+  --title-color: var(--purple-50);
+  --user-name-color: var(--purple-50);
+  --user-status-color: var(--grey-200);
+}
+
+.card--second {
+  --bg-color-card: var(--grey-500);
+  --border-color-image: var(--grey-200);
+  --text-color: var(--grey-200);
+  --title-color: var(--grey-100);
+  --user-name-color: var(--grey-100);
+  --user-status-color: var(--grey-400);
+}
+
+.card--third {
+  --bg-color-card: var(--white);
+  --text-color: var(--grey-400);
+  --title-color: var(--grey-500);
+  --user-name-color: var(--grey-500);
+  --user-status-color: var(--grey-400);
+}
+
+.card--fourth {
+  --bg-color-card: var(--dark-blue);
+  --border-color-image: var(--purple-500);
+  --text-color: var(--grey-200);
+  --title-color: var(--grey-200);
+  --user-name-color: var(--grey-200);
+  --user-status-color: var(--grey-200);
+}
+
+.card--fifth {
+  --bg-color-card: var(--white);
+  --text-color: var(--grey-400);
+  --title-color: var(--grey-500);
+  --user-name-color: var(--grey-500);
+  --user-status-color: var(--grey-200);
+}
+
+/* ================= */
+/* # Media Queries # */
+/* ================= */
+
+@media (min-width: 48em) {
+  .cards {
+    /* Box model */
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card--second {
+    --user-status-color: var(--grey-200);
+  }
+
+  .card--fifth {
+    --user-status-color: var(--grey-400);
+  }
+}
+
+@media (min-width: 64em) {
+  .cards {
+    /* Box model */
+    grid-template-columns: none;
+    grid-template-areas:
+      "first first first second fifth"
+      "third fourth fourth fourth fifth";
+  }
+
+  .card--first {
+    /* Positioning */
+    grid-area: first;
+  }
+
+  .card--second {
+    /* Positioning */
+    grid-area: second;
+  }
+
+  .card--third {
+    /* Positioning */
+    grid-area: third;
+  }
+
+  .card--fourth {
+    /* Positioning */
+    grid-area: fourth;
+  }
+
+  .card--fifth {
+    /* Positioning */
+    grid-area: fifth;
+  }
+}
